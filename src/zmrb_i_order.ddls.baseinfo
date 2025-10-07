@@ -3,6 +3,7 @@
 {
 "FROM":
 [
+"ZMRB_I_CUSTOMER",
 "ZMRB_ORDER"
 ],
 "ASSOCIATED":
