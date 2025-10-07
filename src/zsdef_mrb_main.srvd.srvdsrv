@@ -1,0 +1,6 @@
+@EndUserText.label: 'Exposing Various Things'
+define service ZSDEF_MRB_MAIN {
+  expose ZMRB_C_CUSTOMER;
+  expose ZMRB_C_ORDER;
+  expose ZMRB_C_ITEM;
+}

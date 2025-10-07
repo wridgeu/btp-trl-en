@@ -1,0 +1,22 @@
+managed implementation in class zbp_mrb_r_customer unique;
+strict ( 2 );
+
+define behavior for ZMRB_R_CUSTOMER alias R_Customer
+persistent table zmrb_customer
+lock master
+authorization master ( none )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly, numbering : managed ) CustomerId;
+
+  // map R view to pers tbl.
+  mapping for zmrb_customer {
+   CustomerId = customer_id;
+   FirstName = first_name;
+   LastName = last_name;
+   Email = email;
+  }
+}

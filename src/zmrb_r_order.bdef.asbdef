@@ -1,0 +1,38 @@
+managed implementation in class zbp_mrb_r_order unique;
+strict ( 2 );
+
+define behavior for ZMRB_R_ORDER alias R_Order
+persistent table zmrb_order
+lock master
+authorization master ( none )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly, numbering : managed ) OrderId;
+  association _Item { create; }
+
+  mapping for zmrb_order {
+    CustomerId = customer_id;
+    OrderId = order_id;
+  }
+}
+
+define behavior for ZMRB_R_ITEM alias R_Item
+persistent table zmrb_item
+lock dependent by _Order
+authorization dependent by _Order
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly, numbering : managed ) ItemId;
+  field ( readonly ) OrderId;
+  association _Order;
+
+  mapping for zmrb_item {
+    ItemId  = item_id;
+    OrderId = order_id;
+  }
+}
