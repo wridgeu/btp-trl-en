@@ -7,10 +7,13 @@
 ],
 "ASSOCIATED":
 [
+"ZMRB_I_CUSTOMER",
 "ZMRB_R_ITEM"
 ],
 "BASE":
-[],
+[
+"ZMRB_I_ORDER"
+],
 "ANNO_REF":
 [],
 "SCALAR_FUNCTION":

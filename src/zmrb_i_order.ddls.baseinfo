@@ -3,11 +3,12 @@
 {
 "FROM":
 [
-"ZMRB_I_CUSTOMER",
 "ZMRB_ORDER"
 ],
 "ASSOCIATED":
-[],
+[
+"ZMRB_I_CUSTOMER"
+],
 "BASE":
 [],
 "ANNO_REF":

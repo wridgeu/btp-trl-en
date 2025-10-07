@@ -8,5 +8,6 @@ define root view entity ZMRB_R_ORDER
   key OrderId,
       CustomerId,
       /* Associations */
+      _Customer,
       _Item
 }
