@@ -13,7 +13,7 @@ authorization master ( none )
   field ( readonly, numbering : managed ) OrderId;
   association _Item { create; }
 
-  mapping for zmrb_order {
+  mapping for zmrb_order corresponding {
     CustomerId = customer_id;
     OrderId = order_id;
   }
@@ -31,7 +31,7 @@ authorization dependent by _Order
   field ( readonly ) OrderId;
   association _Order;
 
-  mapping for zmrb_item {
+  mapping for zmrb_item corresponding {
     ItemId  = item_id;
     OrderId = order_id;
   }

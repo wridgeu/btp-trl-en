@@ -7,13 +7,14 @@ lock master
 authorization master ( none )
 //etag master <field_name>
 {
+
   create;
   update;
   delete;
   field ( readonly, numbering : managed ) CustomerId;
 
   // map R view to pers tbl.
-  mapping for zmrb_customer {
+  mapping for zmrb_customer corresponding {
    CustomerId = customer_id;
    FirstName = first_name;
    LastName = last_name;
