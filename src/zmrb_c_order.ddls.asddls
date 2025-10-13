@@ -6,7 +6,6 @@ define root view entity ZMRB_C_ORDER
   as projection on ZMRB_R_ORDER
 {
   key OrderId,
-      @UI.lineItem: [{ position: 10 }]
       CustomerId,
       /* Associations */
       _Customer,
