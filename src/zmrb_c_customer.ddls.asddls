@@ -11,6 +11,5 @@ define root view entity ZMRB_C_CUSTOMER
       LastName,
       Email,
       /* Associations */
-      _Orders //: redirected to ZMRB_C_ORDER_CONS 
-      // https://help.sap.com/doc/abapdocu_cp_index_htm/CLOUD/en-US/ABENCDS_PV_ASSOC_REDIRECTED.html
+      _Orders
 }

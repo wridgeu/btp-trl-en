@@ -4,13 +4,14 @@
                   typeNamePlural: 'Customers',
                   title: { label: 'title', value: 'FirstName' },
                   description.label: 'Customer ...' }
-
 annotate entity ZMRB_C_CUSTOMER with
 
 {
   @UI.facet: [ { id: 'HEAD', purpose: #HEADER, type: #FIELDGROUP_REFERENCE },
                { id: 'IDENTIFIERS', position: 10, type: #IDENTIFICATION_REFERENCE, label: 'Identifiers' },
                { id: 'ORDERS', position: 20, type: #LINEITEM_REFERENCE, targetElement: '_Orders', label: 'Orders of Customer' } ]
+
+
   @UI.identification: [ { position: 10, hidden: true } ]
   @UI.lineItem: [ { hidden: true } ]
   CustomerId;

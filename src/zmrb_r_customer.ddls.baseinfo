@@ -10,7 +10,9 @@
 "ZMRB_I_ORDER"
 ],
 "BASE":
-[],
+[
+"ZMRB_I_CUSTOMER"
+],
 "ANNO_REF":
 [],
 "SCALAR_FUNCTION":
