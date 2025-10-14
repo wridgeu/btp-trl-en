@@ -7,10 +7,8 @@ define view entity ZMRB_I_ORDER
 
 {
       @EndUserText.label: 'Order Id'
-      @UI.lineItem: [{ position: 10 }]
   key order_id    as OrderId,
       @EndUserText.label: 'Customer Id'
-      @UI.lineItem: [{ position: 20 }]
       customer_id as CustomerId,
 
       /* Association */
