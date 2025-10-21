@@ -10,6 +10,12 @@ define root view entity ZMRB_C_CUSTOMER
       FirstName,
       LastName,
       Email,
+      BirthDate,
+      CreatedAt,
+      CreatedBy,
+      LastChangeAt,
+      LastChangeBy,
+      LocalLastChangeAt,
       /* Associations */
       _Orders
 }

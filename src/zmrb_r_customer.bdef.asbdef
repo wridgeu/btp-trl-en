@@ -1,11 +1,13 @@
 managed implementation in class zbp_mrb_r_customer unique;
 strict ( 2 );
+with draft;
 
 define behavior for ZMRB_R_CUSTOMER alias R_Customer
 persistent table zmrb_customer
-lock master
+draft table zmrb_d_customer
+lock master total etag CreatedAt
 authorization master ( none )
-//etag master <field_name>
+etag master LocalLastChangeAt
 {
 
   create;
@@ -13,11 +15,25 @@ authorization master ( none )
   delete;
   field ( readonly, numbering : managed ) CustomerId;
 
+draft action Resume;
+draft action Edit;
+draft action Activate optimized;
+draft action Discard;
+
+draft determine action Prepare;
+
+//association _Orders { create; with draft; }
+
   // map R view to pers tbl.
   mapping for zmrb_customer corresponding {
    CustomerId = customer_id;
    FirstName = first_name;
    LastName = last_name;
    Email = email;
+   LastChangeAt = lastchange_at;
+   LocalLastChangeAt = locallastchange_at;
+   CreatedAt = created_at;
+   CreatedBy = created_by;
+   LastChangeBy = lastchange_by;
   }
 }

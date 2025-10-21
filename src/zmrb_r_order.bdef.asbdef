@@ -1,38 +1,82 @@
-managed implementation in class zbp_mrb_r_order unique;
+managed  implementation in class zbp_mrb_r_order unique;
 strict ( 2 );
+with draft;
+
 
 define behavior for ZMRB_R_ORDER alias R_Order
 persistent table zmrb_order
-lock master
+draft table zmrb_d_order
+lock master total etag LastChangeAt
 authorization master ( none )
-//etag master <field_name>
+etag master LocalLastChangeAt
 {
   create;
   update;
   delete;
-  field ( readonly, numbering : managed ) OrderId;
-  association _Item { create; }
+
+  field ( readonly, numbering : managed )
+    OrderId;
+
+  field ( readonly )
+    OrderNumber;
+
+  field ( readonly: update)
+    CustomerId;
+
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft determine action Prepare;
+
+  determination setSemanticKeys on save { create; }
+
+  association _Item { create; with draft; }
+
 
   mapping for zmrb_order corresponding {
     CustomerId = customer_id;
     OrderId = order_id;
+    OrderNumber = order_no;
+    OrderDescription = order_description;
+    CreatedAt = created_at;
+    CreatedBy = created_by;
+    LastChangeAt = lastchange_at;
+    LastChangeBy = lastchange_by;
+    LocalLastChangeAt = locallastchange_at;
   }
 }
 
 define behavior for ZMRB_R_ITEM alias R_Item
 persistent table zmrb_item
+draft table zmrb_d_item
 lock dependent by _Order
 authorization dependent by _Order
-//etag master <field_name>
+etag master LocalLastChangeAt
 {
   update;
   delete;
-  field ( readonly, numbering : managed ) ItemId;
-  field ( readonly ) OrderId;
-  association _Order;
+
+  field ( readonly, numbering : managed )
+    ItemId;
+
+  field ( readonly )
+    OrderId,
+    ItemNumber;
+
+
+
+  association _Order { with draft; }
 
   mapping for zmrb_item corresponding {
     ItemId  = item_id;
     OrderId = order_id;
+    ItemNumber  = item_no;
+    ProductName = product_name;
+    ProductQuantity = product_quantity;
+    ProductUnit = product_unit;
+    LastChangeAt = lastchange_at;
+    LocalLastChangeAt = locallastchange_at;
+    CreatedAt = created_at;
   }
 }
