@@ -1,5 +1,6 @@
 managed implementation in class zbp_mrb_r_customer unique;
 strict ( 2 );
+with cross associations;
 with draft;
 
 define behavior for ZMRB_R_CUSTOMER alias R_Customer
@@ -13,14 +14,21 @@ etag master LocalLastChangeAt
   create;
   update;
   delete;
-  field ( readonly, numbering : managed ) CustomerId;
 
-draft action Resume;
-draft action Edit;
-draft action Activate optimized;
-draft action Discard;
+  field ( readonly, numbering : managed )
+    CustomerId;
 
-draft determine action Prepare;
+  field ( features : instance )
+    FirstName,
+    LastName;
+
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft determine action Prepare;
+
+//  association _Orders using
 
 //association _Orders { create; with draft; }
 

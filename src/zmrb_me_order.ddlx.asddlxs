@@ -8,9 +8,8 @@
 annotate entity ZMRB_C_ORDER with
 
 {
-  @UI.facet: [ { id: 'HEAD',
-                 purpose: #HEADER,
-                 type: #FIELDGROUP_REFERENCE,
+  @UI.facet: [ { id: 'HEAD', purpose: #HEADER, 
+                 type: #FIELDGROUP_REFERENCE, 
                  targetQualifier: 'TRG_HEAD' },
                { id: 'ITEMS',
                  position: 20,
@@ -19,24 +18,23 @@ annotate entity ZMRB_C_ORDER with
                  targetElement: '_Item' },
                { id: 'CUSTOMER',
                  position: 10,
-                 label: 'Customer',
-                 type: #FIELDGROUP_REFERENCE,
-                 targetElement: '_Customer'} ]
-
-
+                 label: 'Customer2',
+                 type: #IDENTIFICATION_REFERENCE,
+                 targetElement: '_Customer' } ]
+  @UI.fieldGroup: [ { position: 10, qualifier: 'TRG_HEAD' } ]
   @UI.identification: [ { position: 10 } ]
   @UI.lineItem: [ { position: 10 } ]
-  @UI.fieldGroup: [{ position: 10, qualifier: 'TRG_HEAD' }]
   OrderId;
 
+  @UI.fieldGroup: [ { position: 20, qualifier: 'TRG_HEAD' } ]
   @UI.identification: [ { position: 20 } ]
   @UI.lineItem: [ { position: 20 } ]
-  @UI.fieldGroup: [{ position: 20, qualifier: 'TRG_HEAD' }]
   CustomerId;
 
   /* Associations */
   @UI.identification: [ { label: 'Customer' } ]
   _Customer;
+
   @UI.identification: [ { label: 'Items' } ]
   _Item;
 }

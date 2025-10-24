@@ -1,6 +1,8 @@
 managed  implementation in class zbp_mrb_r_order unique;
 strict ( 2 );
+with cross associations;
 with draft;
+//foreign entity ZMRB_R_CUSTOMER;
 
 
 define behavior for ZMRB_R_ORDER alias R_Order
@@ -20,7 +22,7 @@ etag master LocalLastChangeAt
   field ( readonly )
     OrderNumber;
 
-  field ( readonly: update)
+  field ( readonly: update )
     CustomerId;
 
   draft action Resume;
@@ -32,7 +34,7 @@ etag master LocalLastChangeAt
   determination setSemanticKeys on save { create; }
 
   association _Item { create; with draft; }
-
+  association _Customer { }
 
   mapping for zmrb_order corresponding {
     CustomerId = customer_id;
@@ -63,8 +65,6 @@ etag master LocalLastChangeAt
   field ( readonly )
     OrderId,
     ItemNumber;
-
-
 
   association _Order { with draft; }
 
