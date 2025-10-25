@@ -9,7 +9,6 @@ ENDCLASS.
 
 CLASS lhc_r_customer IMPLEMENTATION.
   METHOD get_instance_features.
-*  // mies cringe -
 *    result = VALUE #( ( %is_draft = keys[ 1 ]-%is_draft
 *                        %key      = keys[ 1 ]-%key
 *                        %features-%field = VALUE #( FirstName =  if_abap_behv=>fc-f-read_only

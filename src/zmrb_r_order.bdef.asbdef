@@ -32,9 +32,10 @@ etag master LocalLastChangeAt
   draft determine action Prepare;
 
   determination setSemanticKeys on save { create; }
+//  validation validateCustomer on save { field CustomerId; }
 
   association _Item { create; with draft; }
-  association _Customer { }
+  association _Customer { inverse function sourceResolvedAssociationFn; }
 
   mapping for zmrb_order corresponding {
     CustomerId = customer_id;

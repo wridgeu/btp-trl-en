@@ -11,6 +11,7 @@ CLASS lhc_r_order IMPLEMENTATION.
 
   METHOD setSemanticKeys.
 
+    " hardcode for testing until number range obj is set up
     MODIFY ENTITY IN LOCAL MODE zmrb_r_order\\R_Order
         UPDATE FIELDS ( OrderNumber ) WITH VALUE #( ( %tky = keys[ 1 ]-%tky
                                                       OrderNumber = '1234567890'  ) ).

@@ -28,10 +28,6 @@ etag master LocalLastChangeAt
   draft action Discard;
   draft determine action Prepare;
 
-//  association _Orders using
-
-//association _Orders { create; with draft; }
-
   // map R view to pers tbl.
   mapping for zmrb_customer corresponding {
    CustomerId = customer_id;
