@@ -1,6 +1,6 @@
 managed implementation in class zbp_mrb_r_customer unique;
 strict ( 2 );
-with cross associations;
+//with cross associations;
 with draft;
 
 define behavior for ZMRB_R_CUSTOMER alias R_Customer
