@@ -35,7 +35,7 @@ etag master LocalLastChangeAt
 //  validation validateCustomer on save { field CustomerId; }
 
   association _Item { create; with draft; }
-  association _Customer { inverse function sourceResolvedAssociationFn; }
+  association _Customer;
 
   mapping for zmrb_order corresponding {
     CustomerId = customer_id;

@@ -1,0 +1,19 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZMRB_C_CUSTOMER_RESTRICTED alias C_CustomerRestricted
+{
+  field ( mandatory : create, readonly : update )
+    FirstName, LastName;
+
+  use create;
+  use update;
+  use delete;
+
+  use action Resume;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+}
