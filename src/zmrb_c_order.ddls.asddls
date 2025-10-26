@@ -8,7 +8,7 @@ define root view entity ZMRB_C_ORDER
   provider contract transactional_query
   as projection on ZMRB_R_ORDER
 
-  association [1..1] to ZMRB_C_CUSTOMER_Restricted as _Customer on $projection.CustomerId = _Customer.CustomerId
+  association [1..1] to ZMRB_C_CUSTOMER_RESTRICTED as _Customer on $projection.CustomerId = _Customer.CustomerId
 
 {
   key OrderId,
