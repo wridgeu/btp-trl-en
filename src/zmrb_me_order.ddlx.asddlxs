@@ -8,19 +8,25 @@
 annotate entity ZMRB_C_ORDER with
 
 {
-  @UI.facet: [ { id: 'HEAD', purpose: #HEADER, 
-                 type: #FIELDGROUP_REFERENCE, 
-                 targetQualifier: 'TRG_HEAD' },
+  @UI.facet: [ { id: 'HEAD', purpose: #HEADER, type: #FIELDGROUP_REFERENCE, targetQualifier: 'TRG_HEAD' },
                { id: 'ITEMS',
                  position: 20,
                  label: 'Items',
                  type: #LINEITEM_REFERENCE,
                  targetElement: '_Item' },
-               { id: 'CUSTOMER',
+               { id: 'CUSTOMER_CROSS',
                  position: 10,
-                 label: 'Customer2',
+                 label: 'Customer Cross',
                  type: #IDENTIFICATION_REFERENCE,
-                 targetElement: '_Customer' } ]
+                 targetElement: '_CustomerCrossBO',
+                 hidden: #(IsCrossBOCustomerHidden) },
+               { id: 'CUSTOMER_RESTR',
+                 position: 12,
+                 label: 'Customer Restricted',
+                 type: #IDENTIFICATION_REFERENCE,
+                 targetElement: '_CustomerRestricted',
+                 hidden: #(IsAssocCustomerHidden) } ]
+
   @UI.fieldGroup: [ { position: 10, qualifier: 'TRG_HEAD' } ]
   @UI.identification: [ { position: 10 } ]
   @UI.lineItem: [ { position: 10 } ]
@@ -31,9 +37,23 @@ annotate entity ZMRB_C_ORDER with
   @UI.lineItem: [ { position: 20 } ]
   CustomerId;
 
+  //  @UI.fieldGroup: [ { position: 20, qualifier: 'TRG_HEAD' } ]
+  //  FirstName;
+
+  @UI.hidden: true
+  IsAssocCustomerHidden;
+  @UI.hidden: true
+  IsCrossBOCustomerHidden;
+
   /* Associations */
-  @UI.identification: [ { label: 'Customer' } ]
-  _Customer;
+  @UI.identification: [ { label: 'Customer Cross BO' } ]
+  _CustomerCrossBO;
+
+  @UI.identification: [ { label: 'Customer Restricted' } ]
+  _CustomerRestricted;
+
+  //  @UI.identification: [ { label: 'Customer Redirected' } ]
+  //  _Customer;
 
   @UI.identification: [ { label: 'Items' } ]
   _Item;

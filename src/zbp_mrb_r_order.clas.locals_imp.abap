@@ -4,8 +4,8 @@ CLASS lhc_r_order DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS setSemanticKeys FOR DETERMINE ON SAVE
       IMPORTING keys FOR R_Order~setSemanticKeys.
-    METHODS validateCustomer FOR VALIDATE ON SAVE
-      IMPORTING keys FOR R_Order~validateCustomer.
+*    METHODS validateCustomer FOR VALIDATE ON SAVE
+*      IMPORTING keys FOR R_Order~validateCustomer.
 
 ENDCLASS.
 
@@ -20,12 +20,12 @@ CLASS lhc_r_order IMPLEMENTATION.
 
   ENDMETHOD.
 
-  METHOD validateCustomer.
-    READ ENTITIES OF zmrb_r_order IN LOCAL MODE
-         ENTITY R_Order
-         ALL FIELDS
-         WITH CORRESPONDING #( keys )
-         RESULT DATA(orders).
+*  METHOD validateCustomer.
+*    READ ENTITIES OF zmrb_r_order IN LOCAL MODE
+*         ENTITY R_Order
+*         ALL FIELDS
+*         WITH CORRESPONDING #( keys )
+*         RESULT DATA(orders).
 
 *    READ ENTITIES OF zmrb_r_order IN LOCAL MODE
 *         ENTITY R_Order BY \_Customer
@@ -50,7 +50,7 @@ CLASS lhc_r_order IMPLEMENTATION.
 **             TO reported-r_order.
 **      APPEND VALUE #( customerid = customers_failed-r_customer[ 1 ]-CustomerId ) TO failed-zmrb_r_customer.
 *    ENDLOOP.
-  ENDMETHOD.
+*  ENDMETHOD.
 
 ENDCLASS.
 

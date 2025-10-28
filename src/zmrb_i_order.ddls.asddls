@@ -37,6 +37,9 @@ define view entity ZMRB_I_ORDER
       @EndUserText.label: 'Local last change at'
       locallastchange_at as LocalLastChangeAt,
 
+      //      @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZMRB_DMY_VRT_ELEM_CAL'
+      //      CAST ('' as abap.char(60) ) as FirstName,
+
       /* Association */
       _Customer
 }

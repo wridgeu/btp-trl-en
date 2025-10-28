@@ -29,10 +29,10 @@ etag master LocalLastChangeAt
   draft action Edit;
   draft action Activate optimized;
   draft action Discard;
-  draft determine action Prepare { validation validateCustomer; }
+  draft determine action Prepare; //{ validation validateCustomer; }
 
   determination setSemanticKeys on save { create; }
-  validation validateCustomer on save { create; field CustomerId; }
+//  validation validateCustomer on save { create; field CustomerId; }
 
   association _Item { create; with draft; }
   association _Customer;

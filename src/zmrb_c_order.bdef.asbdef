@@ -1,5 +1,6 @@
 projection;
 strict ( 2 );
+
 use draft;
 
 define behavior for ZMRB_C_ORDER alias C_Order
@@ -14,8 +15,8 @@ define behavior for ZMRB_C_ORDER alias C_Order
   use action Prepare;
   use action Resume;
 
+//  use association _Customer;
   use association _Item { create; with draft; }
-//  use association _Customer { }
 
 }
 
