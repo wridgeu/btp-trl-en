@@ -21,6 +21,49 @@ CLASS zmrb_rap_dmo IMPLEMENTATION.
 *         RESULT DATA(result).
 *
 *
-*    out->write( result ).
+
+**********************************************************************
+*
+* START: Number Range Object
+*
+**********************************************************************
+*    TRY.
+*        cl_numberrange_intervals=>create(
+*          EXPORTING
+*            interval  = VALUE #( ( nrrangenr = '01' fromnumber = '2000000000' tonumber = '2999999999' procind = 'I' ) )
+*            object    = 'Z_MRB_ORD'
+*          IMPORTING
+*            error     = DATA(lv_error)
+*            error_inf = DATA(ls_error)
+*            error_iv  = DATA(lt_error_iv)
+*            warning   = DATA(lv_warning)
+*        ).
+*      CATCH cx_nr_object_not_found.
+*      CATCH cx_number_ranges.
+*
+*    ENDTRY.
+
+*    COMMIT WORK.
+
+*cl_numberrange_intervals=>
+
+*    cl_numberrange_runtime=>number_get(
+*      EXPORTING
+**    ignore_buffer     =
+*        nr_range_nr       = '01'
+*        object            = 'Z_MRB_ORD'
+**    quantity          =
+**    subobject         =
+**    toyear            =
+*      IMPORTING
+*        number            = DATA(lv_number)
+*        returncode        = DATA(lv_returncode)
+**    returned_quantity =
+*    ).
+*CATCH cx_nr_object_not_found.
+*CATCH cx_number_ranges.
+
+
+*    out->write( lv_number ).
   ENDMETHOD.
 ENDCLASS.

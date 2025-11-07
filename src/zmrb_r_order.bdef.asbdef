@@ -35,7 +35,7 @@ etag master LocalLastChangeAt
 //  validation validateCustomer on save { create; field CustomerId; }
 
   association _Item { create; with draft; }
-  association _Customer;
+  association _Customer { with draft; }
 
   mapping for zmrb_order corresponding {
     CustomerId = customer_id;

@@ -25,8 +25,12 @@ annotate entity ZMRB_C_ORDER with
                  label: 'Customer Restricted',
                  type: #IDENTIFICATION_REFERENCE,
                  targetElement: '_CustomerRestricted',
-                 hidden: #(IsAssocCustomerHidden) } ]
-
+                 hidden: #(IsAssocCustomerHidden) },
+               { id: 'CUSTOMER_REDIRECT',
+                 position: 13,
+                 label: 'Customer Redirected',
+                 type: #IDENTIFICATION_REFERENCE,
+                 targetElement: '_Customer' } ]
   @UI.fieldGroup: [ { position: 10, qualifier: 'TRG_HEAD' } ]
   @UI.identification: [ { position: 10 } ]
   @UI.lineItem: [ { position: 10 } ]
@@ -42,6 +46,7 @@ annotate entity ZMRB_C_ORDER with
 
   @UI.hidden: true
   IsAssocCustomerHidden;
+
   @UI.hidden: true
   IsCrossBOCustomerHidden;
 
@@ -52,8 +57,8 @@ annotate entity ZMRB_C_ORDER with
   @UI.identification: [ { label: 'Customer Restricted' } ]
   _CustomerRestricted;
 
-  //  @UI.identification: [ { label: 'Customer Redirected' } ]
-  //  _Customer;
+  @UI.identification: [ { label: 'Customer Redirected' } ]
+  _Customer;
 
   @UI.identification: [ { label: 'Items' } ]
   _Item;

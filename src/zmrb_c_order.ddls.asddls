@@ -31,6 +31,6 @@ define root view entity ZMRB_C_ORDER
           /* Associations */
           _CustomerCrossBO,
           _CustomerRestricted,
-          //          _Customer : redirected to ZMRB_C_CUSTOMER,
-          _Item : redirected to composition child ZMRB_C_ITEM
+          _Customer : redirected to ZMRB_C_CUSTOMER,
+          _Item     : redirected to composition child ZMRB_C_ITEM
 }

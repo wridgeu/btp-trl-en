@@ -15,7 +15,7 @@ define behavior for ZMRB_C_ORDER alias C_Order
   use action Prepare;
   use action Resume;
 
-//  use association _Customer;
+  use association _Customer { with draft; }
   use association _Item { create; with draft; }
 
 }
